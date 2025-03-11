@@ -9,8 +9,7 @@ CLIENT_ID = os.getenv("CLIENT_ID")
 # initializing global variables 
 USER = "Davi_Z"
 
-# get user profile information 
-
+# get user mangalist  
 def getMangaList(user, limit, sort="anime_title", offset=0, status=None, nsfw=True): 
     '''
     status can be reading, completed, on_hold, dropped, and plan_to_read

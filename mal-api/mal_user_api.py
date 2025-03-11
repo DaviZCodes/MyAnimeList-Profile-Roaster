@@ -1,4 +1,4 @@
-# Fetching user data is not possible without OAuth2
+# attempt to fetch user data using the API but it's not possible without OAuth2
 
 import requests
 import os

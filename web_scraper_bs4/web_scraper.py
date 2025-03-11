@@ -1,1 +1,0 @@
-# scrape a user's MyAnimeList profile 

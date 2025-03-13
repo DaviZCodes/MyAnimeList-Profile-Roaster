@@ -2,3 +2,5 @@
 constants.json
 
 .env
+
+.venv

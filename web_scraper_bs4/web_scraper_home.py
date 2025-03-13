@@ -1,4 +1,4 @@
-# attempt to scrape a user's MyAnimeList  
+# scraping MyAnimeList  
 
 import requests 
 from bs4 import BeautifulSoup
@@ -21,7 +21,7 @@ top_anime_html = getHTML(TOP_ANIME_URL)
 
 soup2 = BeautifulSoup(top_anime_html, "html.parser")
 
-print(soup2.prettify())
+# print(soup2.prettify())
 
 # print(soup2.title)
 headers = soup2.find("tr", class_ = "table-header")

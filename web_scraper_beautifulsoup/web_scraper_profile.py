@@ -47,9 +47,8 @@ for li in user_clearfix_all:
 forum posts, reviews, recommendations, interest stacks, blog posts, and clubs 
 '''
 user_status_all = user_profile[0].find_all("ul", class_ = "user-status")
-user_community_data = user_status_all[2].find_all("li", class_ = "link")
 
-for li in user_community_data: 
+for li in user_status_all[2].find_all("li", class_ = "link"): 
     user_status_title = li.find("span", class_ = "user-status-title").text.strip()
     user_status_data = li.find("span", class_ = "user-status-data").text.strip() 
 
@@ -61,4 +60,20 @@ user_num_friends = int(next((link for link in user_profile_extra if "friends" in
 
 user_profile_dict["Number Of Friends"] = user_num_friends
 
-print(user_profile_dict)
+# profile about me 
+user_profile_about = soup.find("div", class_ = "user-profile-about").text.strip()
+
+user_profile_dict["About Me"] = user_profile_about
+
+'''
+user statistics 
+important information is anime and manga stats (days, mean score, and etc.) and the latest anime and manga updates 
+'''
+user_statistics = soup.find("div", class_ = "user-statistics")
+user_anime_basic_stats = user_statistics.find("div", class_ = "stats anime").find("div", class_ = "stat-score")
+
+user_anime_days = float(user_anime_basic_stats.find("div", class_ = "di-tc al pl8 fs12 fw-b").text.strip().split()[1])
+user_anime_mean_score = float(user_anime_basic_stats.find("span", class_ = "score-label").text.strip())
+
+user_anime_detailed_stats = user_statistics.find("div", class_ = "mt12 ml8 mr8 clearfix").text.strip()
+print(user_anime_detailed_stats)

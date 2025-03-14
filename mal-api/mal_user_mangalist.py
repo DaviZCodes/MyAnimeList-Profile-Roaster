@@ -7,7 +7,7 @@ load_dotenv()
 CLIENT_ID = os.getenv("CLIENT_ID") 
 
 # initializing global variables 
-USER = "Davi_Z"
+USER = "Xinil"
 
 # get user mangalist  
 def getMangaList(user, limit, sort="anime_title", offset=0, status=None, nsfw=True): 

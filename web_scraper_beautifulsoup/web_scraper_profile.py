@@ -119,6 +119,6 @@ print(user_profile_dict)
 # User manga Reading, Completed, On-Hold, Dropped, and Plan to Read 
 user_manga_status_left_container_titles = ["Manga Reading", "Manga Completed", "Manga On-Hold", "Manga Dropped", "Manga Plan to Watch"]
 
-# Favorites 
+# Favorites (Anime, Manga, Character, People, and Companies)
 
 # Comments (First page only)

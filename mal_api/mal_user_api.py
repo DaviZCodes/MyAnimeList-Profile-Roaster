@@ -32,5 +32,3 @@ def getUser():
     response.close()
 
     return user_profile
-
-print(getUser())

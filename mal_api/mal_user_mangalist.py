@@ -34,38 +34,41 @@ def getMangaList(user, limit, sort="anime_title", offset=0, status=None, nsfw=Tr
 
     return data
 
-# dictionary to store {manga_title: {completed, score, num_episodes_watched, is_rewatching, updated_at}}
-top20_manga_dict = {}
-bottom10_manga_dict = {} # given that the max limit is 1000, the bottom 10 might be inaccurate if the user's list exceeds 1000 manga 
+def getUserTop20MangaList(user): 
+    # dictionary to store {manga_title: {completed, score, num_episodes_watched, is_rewatching, updated_at}}
+    top20_manga_dict = {}
 
-# top 20 user mangalist sorted by list_score 
-top20_mangalist = getMangaList(USER, 20, "list_score")
+    # top 20 user mangalist sorted by list_score 
+    top20_mangalist = getMangaList(user, 20, "list_score")
 
-# top 20 manga 
-for i in range(len(top20_mangalist)): 
-    manga_title = top20_mangalist[i]["node"]["title"]
-    manga_list_status = top20_mangalist[i]["list_status"]
-    manga_score = manga_list_status["score"]
+    # top 20 manga 
+    for i in range(len(top20_mangalist)): 
+        manga_title = top20_mangalist[i]["node"]["title"]
+        manga_list_status = top20_mangalist[i]["list_status"]
+        manga_score = manga_list_status["score"]
 
-    if manga_score != 0: 
-        top20_manga_dict[manga_title] = manga_list_status
+        if manga_score != 0: 
+            top20_manga_dict[manga_title] = manga_list_status
 
-# 1000 user mangalist 
-user_mangalist_sorted_by_list_score = getMangaList(USER, 1000, sort="list_score")
+    return top20_manga_dict 
 
-# bottom 10 manga 
-temp_index = len(user_mangalist_sorted_by_list_score) - 1
-bottom10_scored_manga = 0
-while temp_index != 0 and bottom10_scored_manga < 10:
-    manga_title = user_mangalist_sorted_by_list_score[temp_index]["node"]["title"]
-    manga_list_status = user_mangalist_sorted_by_list_score[temp_index]["list_status"]
-    manga_score = manga_list_status["score"]
+def getUserBottom20MangaList(user): 
+    bottom10_manga_dict = {} # given that the max limit is 1000, the bottom 10 might be inaccurate if the user's list exceeds 1000 manga 
+    # 1000 user mangalist 
+    user_mangalist_sorted_by_list_score = getMangaList(USER, 1000, sort="list_score")
 
-    if manga_score != 0: # score 0 means an unscored manga 
-        bottom10_manga_dict[manga_title] = manga_list_status
-        bottom10_scored_manga += 1
+    # bottom 10 manga 
+    temp_index = len(user_mangalist_sorted_by_list_score) - 1
+    bottom10_scored_manga = 0
+    while temp_index != 0 and bottom10_scored_manga < 10:
+        manga_title = user_mangalist_sorted_by_list_score[temp_index]["node"]["title"]
+        manga_list_status = user_mangalist_sorted_by_list_score[temp_index]["list_status"]
+        manga_score = manga_list_status["score"]
 
-    temp_index -= 1
+        if manga_score != 0: # score 0 means an unscored manga 
+            bottom10_manga_dict[manga_title] = manga_list_status
+            bottom10_scored_manga += 1
 
-# print statements
-print(top20_manga_dict) 
+        temp_index -= 1 
+    
+    return bottom10_manga_dict

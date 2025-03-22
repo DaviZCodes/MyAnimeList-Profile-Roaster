@@ -1,6 +1,7 @@
 import time 
 import json 
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 from mal_api.mal_user_animelist_api import * 
 from mal_api.mal_user_mangalist import *  
@@ -10,6 +11,7 @@ from web_scraper_beautifulsoup.web_scraper_profile import getUserProfile
 from openai_api.openai_api import generateRoast
 
 app = Flask(__name__)
+CORS(app)
 
 def fetchMalProfile(username): 
     url = f"https://myanimelist.net/profile/{username}"

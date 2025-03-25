@@ -1,6 +1,10 @@
-# MyAnimeList-Profile-Scraper
+# MyAnimeList-Profile-Roaster
 
-> Developed using Python and BeautifulSoup
+> Developed using NextJS, Python, Flask, BeautifulSoup, the MAL API, and the OpenAI API
+
+The project is split into two parts.
+
+The first part of the project is the web scraper and MAL API fetcher. The web scraper is built with Python and BeautifulSoup and runs on Flask. The MAL API fetcher obtains additional information about the user. After the information is scraped, it is sent to the OpenAI API to create the roast of the user's MAL profile. The second part of the project is to display the information to the frontend which is built on NextJS and connected to the backend.
 
 #### MyAnimeList (MAL) Profile Scraper using the MAL API and BeautifulSoup
 

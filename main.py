@@ -42,8 +42,8 @@ def fetchMalProfile(username):
     
     return user_output
 
-def getRoast():
-    mal_profile = fetchMalProfile("Xinil")
+def getRoast(username):
+    mal_profile = fetchMalProfile(username)
 
     time.sleep(3)
 
@@ -51,9 +51,9 @@ def getRoast():
 
     return roast
 
-@app.route("/roast", methods=["GET"])
-def roastProfile(): 
-    roast = getRoast() 
+@app.route("/roast/<username>", methods=["GET"])
+def roastProfile(username): 
+    roast = getRoast(username) 
 
     return jsonify(roast) 
 
